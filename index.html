@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk adee Memeii cantikkk — Maaf ❤️</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ["Playfair Display", "serif"],
+            sans: ["Poppins", "sans-serif"]
+          },
+          animation: {
+            "float-slow": "float 6s ease-in-out infinite",
+            "float": "float 4s ease-in-out infinite",
+            "pulse-soft": "pulseSoft 2s ease-in-out infinite",
+            "fade-up": "fadeUp .8s ease-out both"
+          },
+          keyframes: {
+            float: {
+              "0%,100%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-14px)" }
+            },
+            pulseSoft: {
+              "0%,100%": { transform: "scale(1)" },
+              "50%": { transform: "scale(1.08)" }
+            },
+            fadeUp: {
+              from: { opacity: "0", transform: "translateY(24px)" },
+              to: { opacity: "1", transform: "translateY(0)" }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Poppins, sans-serif;
+      overflow-x: hidden;
+      background: #fff7f8;
+    }
+
+    .glass {
+      background: rgba(255,255,255,.58);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.72);
+      box-shadow: 0 24px 80px rgba(127, 29, 55, .10);
+    }
+
+    .hero-gradient {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(244,114,182,.25), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(251,191,36,.18), transparent 24%),
+        radial-gradient(circle at 50% 85%, rgba(251,113,133,.18), transparent 30%),
+        linear-gradient(135deg, #fff1f2 0%, #fff7ed 48%, #fdf2f8 100%);
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -40px;
+      pointer-events: none;
+      z-index: 50;
+      animation: rise linear forwards;
+      filter: drop-shadow(0 4px 8px rgba(190,24,93,.18));
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(.65) rotate(0deg); opacity: 0; }
+      10% { opacity: .85; }
+      100% { transform: translateY(-115vh) scale(1.25) rotate(18deg); opacity: 0; }
+    }
+
+    .letter-line {
+      width: 0;
+      border-right: 2px solid rgba(190,24,93,.65);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 3.4s steps(42, end) forwards, blink .75s step-end infinite;
+    }
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink { 50% { border-color: transparent } }
+
+    .shine {
+      position: relative;
+      overflow: hidden;
+    }
+    .shine::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-110%);
+      background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.5), transparent 65%);
+      animation: shine 4s infinite;
+    }
+    @keyframes shine { 0%,55% { transform: translateX(-110%); } 75%,100% { transform: translateX(110%); } }
+
+    .modal-backdrop {
+      opacity: 0;
+      pointer-events: none;
+      transition: .35s ease;
+    }
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-card {
+      transform: translateY(25px) scale(.96);
+      transition: .35s ease;
+    }
+    .modal-backdrop.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .no-btn {
+      transition: left .18s ease, top .18s ease;
+    }
+  </style>
+</head>
+
+<body class="text-rose-950">
+
+  <!-- Floating hearts -->
+  <div id="hearts"></div>
+
+  <!-- HERO -->
+  <section class="hero-gradient min-h-screen relative flex items-center justify-center px-5 py-16">
+    <div class="absolute top-8 left-8 text-4xl animate-float-slow opacity-60">♡</div>
+    <div class="absolute bottom-20 right-10 text-5xl animate-float opacity-50">♡</div>
+
+    <div class="max-w-4xl w-full text-center">
+      <p class="uppercase tracking-[.35em] text-xs md:text-sm text-rose-700/70 mb-6 animate-fade-up">
+        Untuk Sebuah Permintaan Maaf dari kesalahan yang fatal
+      </p>
+
+      <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white/70 shadow-xl mb-8 animate-pulse-soft">
+        <span class="text-5xl">💗</span>
+      </div>
+
+      <h1 class="font-display text-5xl md:text-7xl font-semibold leading-tight mb-6">
+        Ada yang faiz M bilang p ade sayangg<br>
+        <span class="text-rose-600 italic">sesuatu...</span>
+      </h1>
+
+      <p class="text-rose-900/65 max-w-xl mx-auto text-base md:text-lg leading-8 mb-10">
+        Bukan untuk mencari pembenaran. Bukan juga untuk mo buat semuanya langsung jadi bae.
+        Tapi untuk m Tanggung jawab dengan kesalahan yang ada buat
+      </p>
+
+      <button onclick="scrollToLetter()"
+        class="shine relative inline-flex items-center gap-3 px-7 py-4 rounded-full bg-rose-600 text-white font-semibold shadow-xl shadow-rose-300/40 hover:bg-rose-700 hover:-translate-y-1 transition">
+        Buka suratku <span>♡</span>
+      </button>
+
+      <div class="mt-16 text-rose-400 animate-bounce">↓</div>
+    </div>
+  </section>
+
+  <!-- LETTER -->
+  <section id="letter" class="min-h-screen flex items-center justify-center px-5 py-24 bg-white">
+    <div class="max-w-3xl w-full">
+      <div class="glass rounded-[2rem] p-7 md:p-14 relative">
+        <div class="absolute -top-5 -left-3 text-5xl rotate-[-15deg]">💌</div>
+
+        <p class="text-sm tracking-widest uppercase text-rose-500 mb-5">Dari Faiz...</p>
+
+        <h2 class="font-display text-4xl md:text-5xl mb-8">
+          Ade Memei. <span class="italic text-rose-600">sayang.</span>
+        </h2>
+
+        <div class="space-y-5 text-rose-950/75 leading-8 text-[15px] md:text-base">
+          <p>
+            Faiz sadar mungkin kata <b class="text-rose-700">"maaf"</b> nda bkeng smua jadi langsung bae
+            untuk sesuatu yang sbkeng sayang kecewa, sedih, atau bahkan bdmood dg faiz.
+          </p>
+
+          <p>
+            faiz nd menyalahkan sppun entah drg yg bpngge atau spapun itu. faiz juga nda mo cari alasan pembenaran terkait yg faiz dbkeng.
+            krna faiz tau, smua itu bkeng sayang marah dg kecewa pastinya
+          </p>
+
+          <p>
+           Maaf yaa sayang kalau sbkeng sayang marah dg kecewa, pdhal sayang smntara ada di kkn, bnya krja bnya pkiran tpi faiz malah btmba" urusan p sayang
+           yg faiz bkeng skrg mungkin cmn ini, tapi faiz ttp mbrsha semaksimal mungkin untuk mbkeng saya phati mluluh ulang, faiz tau ini kslhan brat krna dplpa bblg psayang
+           sma dg faiz jelaskan juga itu momen yg cpt skli, bkuriki bnya yg hrs m susun dll jadinya nd dpa bblg psayang bhkan faiz juga slupa ttg itu
+           tapi itu nd bisa juga dijadikan alsan untuk pembenaran krna appun itu spsti faiz yang salah
+          </p>
+
+
+          <p>
+            faiz mungkin banya salah psayang, tapi faiz sllu m usahakan yang terbaik for sayang, appun itu faiz m brsha spya sayang nd m sedih aplagi smpe bgni,
+            faiz tau itu bkeng saki hati psayang, tapi faiz jga ttp brsha for mtnggung jawab smua yg bkeng marah psayangg
+          </p>
+        </div>
+
+        <div class="mt-10 pt-8 border-t border-rose-100">
+          <p class="font-display text-2xl italic text-rose-700">
+            "Faiz nda minta langsung sayang mkse maaf krna itu mungkin brat for sayang, tapi faiz cm minta kalo sayang s tenang tu hati dng pikiran no boleh trg 2 mbcrta ulg, mb manja ulang. faiz salah, faiz juga nda mkse sngaja psayang bgtu, faiz mtnggung jawab smua faiz p kslhan sayang."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LITTLE THINGS -->
+  <section class="px-5 py-24 bg-rose-50/60">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="uppercase tracking-[.3em] text-xs text-rose-500 mb-3">karena sayang faiz brsykur punya org yg sllu mngrti dgn faiz...</p>
+        <h2 class="font-display text-4xl md:text-5xl">dg krna sayang juga bkeng faiz p hdop lebe berwarna.</h2>
+      </div>
+
+    
+  </section>
+
+  <!-- PROMISE -->
+  <section class="hero-gradient px-5 py-24">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="text-5xl mb-7">🤍</div>
+      <p class="uppercase tracking-[.3em] text-xs text-rose-500 mb-4">ini bukan janji sempurna</p>
+      <h2 class="font-display text-4xl md:text-5xl mb-8">
+        Tapi sebuah usaha untuk faiz menjadi lebih baik lagi kedepannya
+      </h2>
+
+      <div class="grid sm:grid-cols-3 gap-4 text-left mb-10">
+        <div class="bg-white/60 rounded-2xl p-5">
+          <b class="block mb-2">01 — Mendengar</b>
+          <span class="text-sm text-rose-900/60">Lebih banyak mendengar, bukan cmn membela diri.</span>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-5">
+          <b class="block mb-2">02 — Mengerti</b>
+          <span class="text-sm text-rose-900/60">Belajar memahami perasaannya sayang, bukan menganggap cmn faiz.</span>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-5">
+          <b class="block mb-2">03 — Membuktikan</b>
+          <span class="text-sm text-rose-900/60">dg bukan cmn kata-kata tapi ada pembuktian lewat tanggung jawab</span>
+        </div>
+      </div>
+
+      <p class="font-display text-2xl italic text-rose-700">
+        "Kalau sayang s agak tenang itu hati dg pikiran, faizz mohon maaf dg minta tolong spya ulang bcrtaa dg sayang."
+      </p>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="min-h-[80vh] flex items-center justify-center px-5 py-24 bg-white relative">
+    <div class="max-w-2xl text-center">
+      <p class="text-sm uppercase tracking-[.3em] text-rose-500 mb-5"> dg satu pertanyaan terakhir</p>
+      <h2 class="font-display text-5xl md:text-6xl mb-6">
+        Boleh sayang<br><span class="text-rose-600 italic">mkse maaf pfaiz?</span>
+      </h2>
+      <p class="text-rose-900/60 leading-8 mb-9">
+        nda perlu jawab skrang sayang, kse tenang dulu hati dg pikiran
+      </p>
+
+      <div class="relative h-20 max-w-sm mx-auto">
+        <button onclick="sayYes()"
+          class="absolute left-1/2 -translate-x-[110%] px-8 py-3.5 rounded-full bg-rose-600 text-white font-semibold shadow-lg hover:bg-rose-700 transition">
+          Iya, boleh 🤍
+        </button>
+
+        <button id="noBtn"
+          class="no-btn absolute left-1/2 translate-x-[10%] px-8 py-3.5 rounded-full border border-rose-200 bg-white text-rose-700 font-semibold"
+          onmouseenter="moveNoButton()"
+          onclick="moveNoButton()">
+          Belum...
+        </button>
+      </div>
+
+      <p id="finalHint" class="mt-12 text-xs text-rose-400 opacity-0 transition">
+        ehehe tombolnya juga nda tega mblg "nda" 🥺
+      </p>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal-backdrop fixed inset-0 z-[100] bg-rose-950/40 backdrop-blur-md flex items-center justify-center p-5">
+    <div class="modal-card max-w-lg w-full bg-white rounded-[2rem] p-8 md:p-12 text-center shadow-2xl">
+      <div class="text-6xl mb-6">🥹💗</div>
+      <p class="uppercase tracking-[.25em] text-xs text-rose-400 mb-4">Maaciii cayangkuuu</p>
+      <h3 class="font-display text-4xl mb-5">faiz akan mlebe berusaha lagi untuk jadi yang terbaik.</h3>
+      <dp class="text-sm md:text-base text-rose-900/65 leading-7 mb-8">
+        dg Bukan cm krna takut kehilangan ayang,
+        tapi krna sayang layak diperlakukan dengan lebih baik.
+      </dp>
+      <p class="font-display italic text-xl text-rose-600 mb-8">
+        "Maaf ya... dan mksih juga karena s bbaca sampe sini. 🤍"
+      </p>
+      <button onclick="closeModal()"
+        class="px-7 py-3 rounded-full bg-rose-600 text-white font-semibold hover:bg-rose-700 transition">
+        Peluk virtual dulu 🫂
+        nanti sbntar sore k posko ehehe
+      </button>
+    </div>
+  </div>
+
+  <footer class="py-10 text-center bg-rose-950 text-rose-100/60 text-xs">
+    semoga sayang senang ♡
+  </footer>
+
+  <script>
+    function scrollToLetter() {
+      document.getElementById("letter").scrollIntoView({ behavior: "smooth" });
+      burstHearts(8);
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = ["♥","♡","❤","💗","💖"][Math.floor(Math.random() * 5)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (14 + Math.random() * 24) + "px";
+      heart.style.animationDuration = (5 + Math.random() * 6) + "s";
+      document.getElementById("hearts").appendChild(heart);
+      setTimeout(() => heart.remove(), 12000);
+    }
+
+    setInterval(createHeart, 900);
+
+    function burstHearts(amount) {
+      for (let i = 0; i < amount; i++) {
+        setTimeout(createHeart, i * 120);
+      }
+    }
+
+    function moveNoButton() {
+      const btn = document.getElementById("noBtn");
+      const parent = btn.parentElement.getBoundingClientRect();
+      const maxX = Math.max(20, parent.width - btn.offsetWidth);
+      const maxY = Math.max(10, parent.height - btn.offsetHeight);
+
+      btn.style.left = Math.random() * maxX + "px";
+      btn.style.top = Math.random() * maxY + "px";
+      btn.style.transform = "none";
+
+      document.getElementById("finalHint").style.opacity = "1";
+    }
+
+    function sayYes() {
+      burstHearts(28);
+      document.getElementById("modal").classList.add("active");
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.remove("active");
+    }
+
+    document.getElementById("modal").addEventListener("click", (e) => {
+      if (e.target.id === "modal") closeModal();
+    });
+  </script>
+</body>
+</html>
