@@ -123,15 +123,54 @@
       transform: translateY(0) scale(1);
     }
 
+    #introScreen {
+      transition: opacity .45s ease, visibility .45s ease;
+    }
+    #introScreen.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #musicBtn.playing { animation: musicPulse 1.5s ease-in-out infinite; }
+    @keyframes musicPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+
     .no-btn {
       transition: left .18s ease, top .18s ease;
     }
   </style>
 </head>
 
-<body class="text-rose-950">
+<body class="text-rose-950 overflow-hidden">
 
-  <audio id="bgMusic" autoplay loop>
+  <!-- Intro screen -->
+  <div id="introScreen" class="fixed inset-0 z-[120] hero-gradient flex items-center justify-center px-5 py-16">
+    <div class="max-w-2xl w-full text-center">
+      <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white/70 shadow-xl mb-8 animate-pulse-soft">
+        <span class="text-5xl">💌</span>
+      </div>
+      <p class="uppercase tracking-[.35em] text-xs md:text-sm text-rose-700/70 mb-5">Ada sesuatu untuk ade Memeii cantikkk</p>
+      <h1 class="font-display text-5xl md:text-7xl font-semibold leading-tight mb-6">
+        Siap untuk<br><span class="text-rose-600 italic">mliat surat?</span>
+      </h1>
+      <p class="text-rose-900/65 max-w-xl mx-auto leading-8 mb-10">
+        Tekan dpe tombol neh sayangkuu.
+      </p>
+      <button onclick="enterSite()"
+        class="shine relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-rose-600 text-white font-semibold shadow-xl shadow-rose-300/40 hover:bg-rose-700 hover:-translate-y-1 transition">
+        Siap untuk melihat <span>♡</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MUSIC PLAYER -->
+  <div id="musicPlayer" class="fixed top-5 right-5 z-[80]">
+    <button id="musicBtn" onclick="toggleMusic()"
+      class="glass w-12 h-12 rounded-full flex items-center justify-center text-xl text-rose-700 shadow-lg hover:scale-110 transition"
+      aria-label="Matikan musik">🔊</button>
+  </div>
+
+  <audio id="bgMusic" loop>
     <source src="lagu.mp3" type="audio/mpeg">
   </audio>
 
@@ -363,13 +402,37 @@
     }
 
     const bgMusic = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+
     bgMusic.volume = 0.35;
 
-    window.addEventListener("DOMContentLoaded", () => {
-      bgMusic.play().catch(() => {
-        // Browser dapat memblokir autoplay audio yang bersuara.
+    function enterSite() {
+      document.getElementById("introScreen").classList.add("is-hidden");
+      document.body.classList.remove("overflow-hidden");
+      bgMusic.play().then(() => {
+        musicBtn.textContent = "🔊";
+        musicBtn.setAttribute("aria-label", "Matikan musik");
+        musicBtn.classList.add("playing");
+      }).catch(() => {
+        musicBtn.textContent = "🎵";
+        musicBtn.setAttribute("aria-label", "Putar musik");
       });
-    });
+    }
+
+    function toggleMusic() {
+      if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+          musicBtn.textContent = "🔊";
+          musicBtn.setAttribute("aria-label", "Matikan musik");
+          musicBtn.classList.add("playing");
+        });
+      } else {
+        bgMusic.pause();
+        musicBtn.textContent = "🎵";
+        musicBtn.setAttribute("aria-label", "Putar musik");
+        musicBtn.classList.remove("playing");
+      }
+    }
   </script>
 </body>
 </html>
