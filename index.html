@@ -123,9 +123,6 @@
       transform: translateY(0) scale(1);
     }
 
-    #musicBtn.playing { animation: musicPulse 1.5s ease-in-out infinite; }
-    @keyframes musicPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
-
     .no-btn {
       transition: left .18s ease, top .18s ease;
     }
@@ -134,16 +131,10 @@
 
 <body class="text-rose-950">
 
-  <!-- MUSIC PLAYER -->
-  <div id="musicPlayer" class="fixed top-5 right-5 z-[80]">
-    <button id="musicBtn" onclick="toggleMusic()"
-      class="glass w-12 h-12 rounded-full flex items-center justify-center text-xl text-rose-700 shadow-lg hover:scale-110 transition"
-      aria-label="Putar musik">🎵</button>
-  </div>
-
-  <audio id="bgMusic" loop preload="auto">
+  <audio id="bgMusic" autoplay loop>
     <source src="lagu.mp3" type="audio/mpeg">
   </audio>
+
 
   <!-- Floating hearts -->
   <div id="hearts"></div>
@@ -372,35 +363,12 @@
     }
 
     const bgMusic = document.getElementById("bgMusic");
-    const musicBtn = document.getElementById("musicBtn");
+    bgMusic.volume = 0.35;
 
-    function toggleMusic() {
-      if (bgMusic.paused) {
-        bgMusic.volume = 0.45;
-        bgMusic.play().then(() => {
-          musicBtn.textContent = "🔊";
-          musicBtn.classList.add("playing");
-        }).catch(() => {
-          alert("Pastikan file lagu.mp3 ada di folder yang sama dengan index.html.");
-        });
-      } else {
-        bgMusic.pause();
-        musicBtn.textContent = "🎵";
-        musicBtn.classList.remove("playing");
-      }
-    }
-
-    // Musik mencoba mulai setelah pengunjung pertama kali berinteraksi.
-    document.addEventListener("click", function startMusicOnce() {
-      bgMusic.volume = 0.45;
-      bgMusic.play().then(() => {
-        musicBtn.textContent = "🔊";
-        musicBtn.classList.add("playing");
-      }).catch(() => {});
-    }, { once: true });
-
-    document.getElementById("modal").addEventListener("click", (e) => {
-      if (e.target.id === "modal") closeModal();
+    window.addEventListener("DOMContentLoaded", () => {
+      bgMusic.play().catch(() => {
+        // Browser dapat memblokir autoplay audio yang bersuara.
+      });
     });
   </script>
 </body>
